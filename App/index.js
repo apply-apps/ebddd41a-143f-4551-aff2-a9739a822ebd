@@ -1,5 +1,6 @@
 // Filename: index.js
 // Combined code from all files
+
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, TextInput, Button, View, ActivityIndicator } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -46,6 +47,7 @@ export default function App() {
                     selectedValue={time}
                     style={styles.picker}
                     onValueChange={(itemValue) => setTime(itemValue)}
+                    mode="dropdown"
                 >
                     <Picker.Item label="9:00 AM" value="9:00 AM" />
                     <Picker.Item label="10:00 AM" value="10:00 AM" />
@@ -62,10 +64,11 @@ export default function App() {
                     value={note}
                     onChangeText={setNote}
                     placeholder="Add your notes here"
+                    placeholderTextColor="#CCC"
                 />
-                <Button title="Book Now" onPress={handleBooking} disabled={loading} />
+                <Button title="Book Now" onPress={handleBooking} disabled={loading} color="#FFFFFF" />
 
-                {loading && <ActivityIndicator size="large" color="#0000ff" />}
+                {loading && <ActivityIndicator size="large" color="#00ff00" />}
                 {responseMessage && <Text style={styles.response}>{responseMessage}</Text>}
             </View>
         </SafeAreaView>
@@ -76,12 +79,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
+        backgroundColor: '#121212', // Dark background
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         textAlign: 'center',
         marginVertical: 20,
+        color: '#FFFFFF', // Light text color
     },
     form: {
         marginTop: 20,
@@ -89,10 +94,13 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 16,
         marginBottom: 10,
+        color: '#FFFFFF', // Light text color
     },
     picker: {
         height: 50,
         marginBottom: 20,
+        color: '#FFFFFF', // Light text color
+        backgroundColor: '#1E1E1E', // Darker picker background
     },
     input: {
         height: 40,
@@ -100,6 +108,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom: 20,
         paddingHorizontal: 10,
+        color: '#FFFFFF', // Light text color
+        backgroundColor: '#1E1E1E', // Dark input background
     },
     response: {
         marginTop: 20,
